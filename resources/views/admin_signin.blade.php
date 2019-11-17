@@ -10,7 +10,7 @@
     	<form action="" class="form-login">
     		<ul class="login-nav">
     			<li class="login-nav__item active">
-    				<a href="#">Sign In</a>
+    				<a href="#">Admin Sign In</a>
     			</li>
     			<!--<li class="login-nav__item">
     				<a href="#">Sign Up</a>
@@ -24,13 +24,8 @@
     			Password
     		</label>
     		<input id="login-input-password" class="login__input" type="password" />
-    		<label for="login-sign-up" class="login__label--checkbox">
-    			<input id="login-sign-up" type="checkbox" class="login__input--checkbox" />
-    			Keep me Signed in
-    		</label>
     		<button class="login__submit" disabled>Sign in</button>
     	</form>
-    	<a href="#" class="login__forgot">Forgot Password?</a>
     </div>
   </body>
 </html>
