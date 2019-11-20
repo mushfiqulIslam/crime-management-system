@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'PagesController@home');
+Route::get('/login', 'PagesController@sigup');
 Route::get('/admin', 'PagesController@admin');

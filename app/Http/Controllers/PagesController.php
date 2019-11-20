@@ -13,4 +13,8 @@ class PagesController extends Controller{
     public function admin(){
       return view('admin_signin');
     }
+
+    public function sigup(){
+      return view('login');
+    }
 }
