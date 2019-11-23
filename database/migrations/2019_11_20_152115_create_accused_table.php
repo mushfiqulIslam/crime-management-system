@@ -15,7 +15,13 @@ class CreateAccusedTable extends Migration
     {
         Schema::create('accused', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('name');
+            $table->bigInteger('fir_id')->unsigned();;
+            $table->string('address');
+            $table->string('status');
+            $table->unsignedInteger('l_id');
+            $table->foreign('fir_id')->references('id')->on('FIR');
+            $table->foreign('l_id')->references('id')->on('lawer');
         });
     }
 

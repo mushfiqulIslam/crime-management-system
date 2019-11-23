@@ -15,7 +15,13 @@ class CreatePoliceTable extends Migration
     {
         Schema::create('police', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('name');
+            $table->date('birth_date');
+            $table->string('designation');
+            $table->date('joining_date');
+            $table->date('retire_date');
+            $table->unsignedInteger('thana_id');
+            $table->foreign('thana_id')->references('id')->on('thana');
         });
     }
 

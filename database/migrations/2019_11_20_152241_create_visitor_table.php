@@ -14,8 +14,14 @@ class CreateVisitorTable extends Migration
     public function up()
     {
         Schema::create('visitor', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+          $table->bigIncrements('id');
+          $table->string('name');
+          $table->string('address');
+          $table->string('phone_no');
+          $table->timestamps();
+          $table->bigInteger('a_id')->unsigned();;
+          $table->string('relation');
+          $table->foreign('a_id')->references('id')->on('accused');
         });
     }
 

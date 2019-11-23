@@ -15,7 +15,10 @@ class CreateWitnessTable extends Migration
     {
         Schema::create('witness', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('name');
+            $table->string('statement');
+            $table->bigInteger('fir_id')->unsigned();;
+            $table->foreign('fir_id')->references('id')->on('FIR');
         });
     }
 

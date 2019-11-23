@@ -14,8 +14,12 @@ class CreateSupervisorTable extends Migration
     public function up()
     {
         Schema::create('supervisor', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->bigInteger('police_id')->unsigned();
+            $table->unsignedInteger('thana_id');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->foreign('thana_id')->references('id')->on('thana');
+            $table->foreign('police_id')->references('id')->on('police');
         });
     }
 

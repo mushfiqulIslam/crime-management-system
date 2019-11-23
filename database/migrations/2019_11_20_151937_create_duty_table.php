@@ -14,8 +14,14 @@ class CreateDutyTable extends Migration
     public function up()
     {
         Schema::create('duty', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->Increments('id');
+            $table->bigInteger('police_id')->unsigned();;
+            $table->unsignedInteger('thana_id');
+            $table->dateTime('start');
+            $table->dateTime('finish');
+            $table->foreign('thana_id')->references('id')->on('thana');
+            $table->foreign('police_id')->references('id')->on('police');
+
         });
     }
 
