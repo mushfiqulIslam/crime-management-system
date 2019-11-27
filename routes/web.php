@@ -12,5 +12,10 @@
 */
 
 Route::get('/', 'PagesController@home');
-Route::get('/login', 'PagesController@sigup');
-Route::get('/admin', 'PagesController@admin');
+Route::get('/login', 'PagesController@signup');
+Route::post('/login', 'PagesController@signup');
+Route::get('/login/{user}', 'PagesController@userhome');
+Route::get('/admin', 'AdminController@signup');
+Route::post('/admin', 'AdminController@signup');
+Route::get('/admin/{user}', 'AdminController@dashboard');
+Route::get('/admin/{user}/thana_list', 'AdminController@thanalist');

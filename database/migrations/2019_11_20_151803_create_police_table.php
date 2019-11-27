@@ -19,7 +19,7 @@ class CreatePoliceTable extends Migration
             $table->date('birth_date');
             $table->string('designation');
             $table->date('joining_date');
-            $table->date('retire_date');
+            $table->date('retire_date')->nullable();
             $table->unsignedInteger('thana_id');
             $table->foreign('thana_id')->references('id')->on('thana');
         });
