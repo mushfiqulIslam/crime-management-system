@@ -34,20 +34,17 @@ class AdminController extends Controller
 
   public function dashboard($user){
     $user = \App\Admin::find($user);
-    $data = DB::table('thana')->join('police', 'police.thana_id', '=', 'thana.id')
+    $data1 = DB::table('thana')->join('police', 'police.thana_id', '=', 'thana.id')
     ->join('supervisor', 'supervisor.police_id', '=', 'police.id')
     ->select('thana.name as thana_name', 'police.name as supervisor_name')
     ->get();
-    #return ($data);
-    return view('admin.admin_panel', compact('data'));
-  }
 
-  public function thanalist($user){
-    $user = \App\Admin::find($user);
-    $data = DB::table('thana')->join('police', 'police.thana_id', '=', 'thana.id')
+    $data2 = DB::table('thana')->join('police', 'police.thana_id', '=', 'thana.id')
     ->select('thana.name as thana_name', DB::raw("count(police.id) as police_number"))
     ->groupBy('thana.id')->get();
-    return ($data);
-    return view('admin.admin_panel', compact('data'));
+
+    $police = \App\Police::all();
+    #return ($data);
+    return view('admin.admin_panel', compact('data1','data2', 'police'));
   }
 }

@@ -18,4 +18,3 @@ Route::get('/login/{user}', 'PagesController@userhome');
 Route::get('/admin', 'AdminController@signup');
 Route::post('/admin', 'AdminController@signup');
 Route::get('/admin/{user}', 'AdminController@dashboard');
-Route::get('/admin/{user}/thana_list', 'AdminController@thanalist');
