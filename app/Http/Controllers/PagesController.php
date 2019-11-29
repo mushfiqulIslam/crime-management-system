@@ -34,7 +34,8 @@ class PagesController extends Controller{
     }
 
     public function userhome($user){
-      return ($user);
+      $duty = \App\Duty::where
+      $scores = $scores->reverse();
       return view('user_home', compact('user'));
     }
 

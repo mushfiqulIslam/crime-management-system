@@ -14,9 +14,6 @@
     			<li class="login-nav__item active">
     				<a href="{{ url('login') }}">Sign In</a>
     			</li>
-    			<li class="login-nav__item">
-    				<a href="#">Sign Up</a>
-    			</li>
     		</ul>
         @if(Session::has('msg'))
         <div class="alert alert-danger">
@@ -34,7 +31,6 @@
     		<label for="login-sign-up" class="login__label--checkbox">
     		<button class="login__submit">Sign in</button>
     	</form>
-    	<a href="#" class="login__forgot">Forgot Password?</a>
     </div>
   </body>
 </html>
