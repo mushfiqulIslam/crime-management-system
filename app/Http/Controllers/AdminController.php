@@ -62,28 +62,95 @@ class AdminController extends Controller
 
   public function addpolice(Request $request, $user){
     if ($request->isMethod('post')){
-
+      $police = new \App\Police;
+      $police->name = request('police_name');
+      $police->birth_date = request('birth_date');
+      $police->designation = request('deignation');
+      $police->joining_date = request('joining_date');
+      $police->thana_id = request('thana_id');
+      $police->save();
+      return redirect()->action(
+        'AdminController@dashboard', ['user' => $user]);
     }
     else{
-      return view('admin.add_police');
+      $thana = \App\Thana::get();
+      return view('admin.add_police', compact('user', 'thana'));
     }
   }
 
   public function addthana(Request $request, $user){
     if ($request->isMethod('post')){
-      return ('cool');
+      $thana = \App\Thana::where('name', '=', request('thana_name'))->first();
+      if ($thana === null) {
+        $thana = new \App\Thana;
+        $thana->name = request('thana_name');
+        $thana->address = request('thana_address');
+        $thana->save();
+        $thana1 = \App\Thana::where('name', '=', request('thana_name'))->get();
+        return redirect()->action(
+          'AdminController@addpolice', ['user' => $user]);
+      }
+      else{
+        Session::flash('msg', 'Thana Exists');
+        return redirect()->back();
+      }
     }
     else{
-      return view('admin.add_thana');
+      return view('admin.add_thana', compact('user'));
     }
   }
 
   public function addsuper(Request $request, $user){
     if ($request->isMethod('post')){
-      return ('cool');
+      $police1 = \App\Police::where([
+        ['name', '=', request('police_name')],
+        ['thana_id', '=', request('thana_id')]])->first();
+      $police = new \App\Supervisor;
+      $police->police_id = $police1->id;
+      $police->thana_id = request('thana_id');
+      $police->email = request('email');
+      $police->password = request('password');
+      $police->save();
+      $police1->designation = 'Supervisor';
+      $police1->save();
+      return redirect()->action(
+        'AdminController@dashboard', ['user' => $user]);
     }
     else{
-      return view('admin.add_supervisor');
+      $thana = \App\Thana::get();
+      return view('admin.add_supervisor', compact('user', 'thana'));
+    }
+  }
+
+  public function removesuper(Request $request, $user){
+    if($request->isMethod('post')){
+      $police_id = request('police_id');
+      $thana_id = request('thana_id');
+      $supervisor = \App\Supervisor::where([
+        ['police_id', '=', $police_id],
+        ['thana_id', '=',$thana_id]
+      ])->first();
+      $police = \App\Police::where([
+        ['id', '=', $police_id],
+        ['thana_id', '=',$thana_id],
+        ['designation', '=', 'Supervisor']
+      ])->first();
+      if($supervisor === null){
+        Session::flash('msg', 'Wrong Credentials. Try again');
+        return redirect()->back();
+      }
+      else {
+        DB::delete("DELETE FROM supervisor where police_id = '$supervisor->police_id'");
+        $police->designation = 'Officer';
+        $police->save();
+        return redirect()->action(
+          'AdminController@dashboard', ['user' => $user]);
+      }
+    }
+    else{
+      $police = \App\Police::where('designation', '=', 'Supervisor')->get();
+      $thana = \App\Thana::get();
+      return view('admin.update_supervisor', compact('user', 'police', 'thana'));
     }
   }
 }

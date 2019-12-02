@@ -23,8 +23,17 @@ Route::get('/admin/{user}/add_thana', 'AdminController@addthana');
 Route::post('/admin/{user}/add_thana', 'AdminController@addthana');
 Route::get('/admin/{user}/add_supervisor', 'AdminController@addsuper');
 Route::post('/admin/{user}/add_supervisor', 'AdminController@addsuper');
+Route::get('/admin/{user}/remove_supervisor', 'AdminController@removesuper');
+Route::post('/admin/{user}/remove_supervisor', 'AdminController@removesuper');
 
 #Supervisor Route
 Route::get('/login', 'PagesController@signup');
 Route::post('/login', 'PagesController@signup');
 Route::get('/login/{user}', 'PagesController@userhome');
+Route::get('/login/{user}/add_FIR', 'PagesController@addFIR');
+Route::get('/login/{user}/FIR', 'PagesController@firboard');
+Route::post('/login/{user}/add_FIR', 'PagesController@addFIR');
+Route::get('/login/{user}/add_duty', 'PagesController@add_duty');
+Route::post('/login/{user}/add_duty', 'PagesController@add_duty');
+Route::get('/login/{user}/add_accused', 'PagesController@addaccued');
+Route::post('/login/{user}/add_accused', 'PagesController@addaccued');

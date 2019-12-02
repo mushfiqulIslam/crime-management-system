@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Thana extends Model
 {
     protected $table = "thana";
+    public $timestamps = false;
 }

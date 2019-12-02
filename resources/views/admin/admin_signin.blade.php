@@ -15,9 +15,6 @@
     			<li class="login-nav__item active">
     				<a href="{{ url('admin') }}">Admin Sign In</a>
     			</li>
-    			<!--<li class="login-nav__item">
-    				<a href="#">Sign Up</a>
-    			</li>-->
     		</ul>
         @if(Session::has('msg'))
         <div class="alert alert-danger">

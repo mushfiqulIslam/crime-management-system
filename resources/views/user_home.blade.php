@@ -40,67 +40,27 @@ span {
 }
 
 </style>
+<div align="center">
 <h1>Duty</h1><br>
-<table style="width:100%">
+<table style="width:90%">
   <tr>
     <th>ID</th>
-    <th>Start_Date_time</th>
-    <th>Finishing_Date_Time</th>
+    <th>Start Date time</th>
+    <th>Finishing Date Time</th>
   </tr>
+  @foreach($duty as $d)
   <tr>
-    <td>001</td>
-    <td>007</td>
-    <td>(^_^)</td>
+    @foreach($police as $p)
+      @if($d->police_id == $p->id)
+        <td>{{ $p->name }}</td>
+      @endif
+    @endforeach
 
+    <td>{{ $d->start }}</td>
+    <td>{{ $d->finish }}</td>
   </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
+  @endforeach
 </table>
+</div>
 </body>
 </html>

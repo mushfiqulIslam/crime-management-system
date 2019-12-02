@@ -9,22 +9,29 @@
   <body>
 
     <div class="login-container">
-    	<form method="Post" action="/admin/{{ $user }}/add_thana" class="form-login">
+    	<form method="Post" action="/admin/{{ $user }}/remove_supervisor" class="form-login">
         {{ csrf_field() }}
         @if(Session::has('msg'))
         <div class="alert alert-danger">
         <strong>{{Session::get('msg')}}</strong>
         </div>
         @endif
-    		<label for="login-input-user" class="login__label">
-    			Thana Name
-    		</label>
-
-    		<input name="thana_name" class="login__input" type="text" />
-    		<label for="login-input-password" class="login__label">
-    			Address
-    		</label>
-    		<input name="thana_address" class="login__input" type="text" />
+        <label for="login-input-user" class="login__label">
+          Thana Name
+        </label>
+        <select name="thana_id" >
+          @foreach($thana as $t)
+            <option value="{{ $t->id }}">{{ $t->name }}</option>
+          @endforeach
+        </select>
+        <label for="login-input-user" class="login__label">
+          Thana Name
+        </label>
+        <select name="police_id" >
+          @foreach($police as $t)
+            <option value="{{ $t->id }}">{{ $t->name }}</option>
+          @endforeach
+        </select>
     		<button class="login__submit" >Submit</button>
     	</form>
     </div>
