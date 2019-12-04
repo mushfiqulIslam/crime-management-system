@@ -6,6 +6,7 @@
     <title>Crime Management System</title>
   </head>
   <link rel="stylesheet" href="/css/app.css">
+  @include('topbar')
   <body>
 
     <div class="login-container">

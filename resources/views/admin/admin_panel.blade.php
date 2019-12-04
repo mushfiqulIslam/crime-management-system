@@ -4,6 +4,41 @@
 <meta charset="utf-8">
 <title>Admin Panel</title>
 <style>
+.bg-img {
+  min-height: 75px;
+ background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.container {
+  position: absolute;
+  top: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
 table, th, td{
   border: 1px solid black;
   border-collapse: collapse;
@@ -17,7 +52,7 @@ th, td {
 
 
   body {
-  padding-top: 80px;
+
   text-align: center;
   font-family: monaco, monospace;
   background:#a0d8d9;
@@ -25,33 +60,31 @@ th, td {
 }
 h1, h2 {
   display: inline-block;
-  background: ;
 }
 h1 {
   font-size:60px;
   font-family: "Times New Roman", Times, serif;
 
-  background:;
-}
-h2 {
-  font-size:
 }
 span {
   background: #fd0;
 }
 
 </style>
+@include('admin.adminbar', ['user' => $user->id])
 <div align="center">
 <h1>Thana Information</h1><br>
 <table style="width:90%">
   <tr>
     <th>Thana Name</th>
+    <th>Address</th>
     <th>Supervisor Name</th>
     <th>Police Number</th>
   </tr>
   <tr>
     @foreach($data1 as $d)
        <td>{{ $d->thana_name }}</td>
+       <td>{{ $d->address }}</td>
        <td>{{ $d->supervisor_name }}</td>
        <td>{{ $d->police_number }}</td>
        </tr>

@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>First information report</title>
+  <title>Witness</title>
+  @include('userbar', ['user' => $user])
 <style>
 table, th, td{
   border: 1px solid black;
@@ -39,24 +41,20 @@ span {
 }
 
 </style>
-@include('userbar', ['user' => $user])
+
 <div align="center">
-<h1>First information report</h1>
+<h1>Witness</h1>
 <table style="width:90%">
   <tr>
-    <th>Id</th>
-    <th>Status</th>
-    <th>Type</th>
-    <th>Created At</th>
-    <th>Postmortem</th>
+    <th>Name</th>
+    <th>Statement</th>
+    <th>FIR</th>
   </tr>
-  @foreach($fir as $d)
+  @foreach($result as $d)
   <tr>
-    <td>{{ $d->id }}</td>
-    <td>{{ $d->status}}</td>
-    <td>{{ $d->type }}</td>
-    <td>{{ $d->created_at }}</td>
-    <td>{{ $d->postmortem_report }}</td>
+    <td>{{ $d->name }}</td>
+    <td>{{ $d->statement }}</td>
+    <td>{{ $d->fir_id }}</td>
   </tr>
   @endforeach
 </table>

@@ -7,6 +7,7 @@
   </head>
   <link rel="stylesheet" href="/css/app.css">
   <body>
+    @include('topbar')
     <div class="login-container">
     	<form method="Post" action="/login" class="form-login">
         {{ csrf_field() }}

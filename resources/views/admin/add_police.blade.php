@@ -9,6 +9,7 @@
     color: blue;
   }
   </style>
+  @include('admin.adminbar', ['user' => $user])
     <link rel="stylesheet" href="/css/app.css">
     <div class="login-container">
 <h2>Police Form</h2>

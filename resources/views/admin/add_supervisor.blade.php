@@ -7,7 +7,7 @@
   </head>
   <link rel="stylesheet" href="/css/app.css">
   <body>
-
+@include('admin.adminbar', ['user' => $user])
     <div class="login-container">
     	<form method="Post" action="/admin/{{ $user }}/add_supervisor" class="form-login">
         {{ csrf_field() }}

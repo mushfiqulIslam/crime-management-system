@@ -37,7 +37,7 @@ class AdminController extends Controller
     $user = \App\Admin::find($user);
     $data1 = DB::table('thana')->join('police', 'police.thana_id', '=', 'thana.id')
     ->join('supervisor', 'supervisor.police_id', '=', 'police.id')
-    ->select('thana.id as thana_id', 'thana.name as thana_name', 'police.name as supervisor_name')
+    ->select('thana.id as thana_id', 'thana.name as thana_name', 'thana.address as address', 'police.name as supervisor_name')
     ->get();
 
     $data2 = DB::table('thana')->join('police', 'police.thana_id', '=', 'thana.id')
@@ -57,7 +57,7 @@ class AdminController extends Controller
        $p['age'] = Carbon::parse($p['birth_date'])->age;
        $p['thana'] = DB::table('thana')->where('id', $p['thana_id'])->value('name');
      }
-    return view('admin.admin_panel', compact('data1','data2', 'police'));
+    return view('admin.admin_panel', compact('data1','data2', 'police', 'user'));
   }
 
   public function addpolice(Request $request, $user){

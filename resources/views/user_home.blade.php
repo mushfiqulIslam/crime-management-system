@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>User Dashboard</title>
+  @include('userbar', ['user' => $user])
 <style>
 table, th, td{
   border: 1px solid black;
@@ -16,7 +17,6 @@ th, td {
 
 
   body {
-  padding-top: 80px;
   text-align: center;
   font-family: monaco, monospace;
   background:#A4B0BD;
